@@ -21,8 +21,9 @@ class User_model extends CI_Model
 		$crud = new grocery_CRUD();
 		$crud->set_table('user');
 		$crud->columns('user');
-		$crud->display_as('iduser','ID');
+		$crud->set_relation('iduserCategory','userCategory','description');
 		$crud->display_as('user','Nombre');
+		$crud->display_as('iduserCategory','Categoria');
 		$crud->change_field_type('password','password');
 		$crud->set_language("spanish");
 		$crud->unset_clone();

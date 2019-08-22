@@ -19,7 +19,7 @@ class Login extends CI_Controller {
     {
         $this->load->view('Login.html');
     }
-    public function logIn_post(){
+    public function login_post(){
         if ($this->input->post()) {
             $userName = $this->input->post('username');
             $password = $this->input->post('password');
@@ -29,17 +29,18 @@ class Login extends CI_Controller {
                 $userData = array(
                     'id'=>$user->iduser,
                     'userName' => $user->user,
+                    'category' => $user->iduserCategory,
                     'login' => TRUE
                 );
                 $this->session->set_userdata($userData);
-                redirect('login/loged');
+                redirect('login/logged');
 
             } else {
                 redirect('login/index');
             }
         }
     }
-    public function loged() {
+    public function logged() {
         if($this->session->userdata('login')) {
            redirect('main/index');
         }
