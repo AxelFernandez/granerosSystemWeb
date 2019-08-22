@@ -27,10 +27,10 @@ class Login extends CI_Controller {
             $user = $this->User_model->userValidate($userName, $password);
             if ($user) {
                 $userData = array(
-                    'id'=>$user->iduser,
-                    'userName' => $user->user,
-                    'category' => $user->iduserCategory,
-                    'login' => TRUE
+                    ID=>$user->iduser,
+                    USERNAME=> $user->user,
+                    CATEGORY => $user->iduserCategory,
+                    LOGIN => TRUE
                 );
                 $this->session->set_userdata($userData);
                 redirect('login/logged');
@@ -41,7 +41,7 @@ class Login extends CI_Controller {
         }
     }
     public function logged() {
-        if($this->session->userdata('login')) {
+        if($this->session->userdata(LOGIN)) {
            redirect('main/index');
         }
         else {
