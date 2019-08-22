@@ -20,7 +20,7 @@ class User_model extends CI_Model
 		$this->load->library('grocery_CRUD');
 		$crud = new grocery_CRUD();
 		$crud->set_table('user');
-		$crud->columns('user');
+		$crud->columns('user', 'iduserCategory');
 		$crud->set_relation('iduserCategory','userCategory','description');
 		$crud->display_as('user','Nombre');
 		$crud->display_as('iduserCategory','Categoria');
