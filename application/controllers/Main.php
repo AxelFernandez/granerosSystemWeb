@@ -28,6 +28,7 @@ class Main extends CI_Controller {
 	/**
 	 * This Method Show user with Grocery Crud, you Must do the same for Category and Registry, but must make the correct grants
 	 * for ever user, in this case, this only available for Administrador user
+	 * To entrer this, change the url from localhost/index.php/main/index to ...../main/user to call this method
 	 *
 	 * ADMIN is a Constant defined in config/constants.php folder
 	 *
