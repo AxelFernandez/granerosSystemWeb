@@ -84,4 +84,37 @@ class Registry_model extends CI_Model
 
 		return $result;
 	}
+
+	public function showPending(){
+		$this->load->library('grocery_CRUD');
+		$crud = new grocery_CRUD();
+		$crud->set_table('registry');
+		$crud->set_read_fields('title','description','image');
+		$crud->columns('title', 'description','idstate','idcategory');
+		$crud->fields('title','description','image','insertDate','iduser','idstate','idcategory');
+		$crud->change_field_type('idcategory','hidden');
+		$crud->change_field_type('insertDate','hidden');
+		$crud->change_field_type('iduser','hidden');
+		$crud->display_as('title','Titulo');
+		$crud->display_as('description','Descripcion');
+		$crud->display_as('idstate','Estado');
+		$crud->set_language("spanish");
+		$crud->set_relation('idstate','state','description');
+		$crud->set_relation('idcategory','category','description');
+		$crud->where('registry.idstate','1');
+		$crud->unset_clone();
+		$crud->unset_add();
+		$crud->unset_export();
+		$crud->unset_print();
+		$crud->set_field_upload('image');
+		$output = $crud->render();
+		return $output;
+
+
+
+
+
+	}
+
+
 }

@@ -43,6 +43,14 @@ class Main extends CI_Controller {
 		}else{redirect('login/index');} //if the user was an common user, the program redirect to login page.
 	}
 
+	public function pending(){
+		$output = $this->registry->showPending();
+		$categorys = $this->category->getAllCategories();
+		$data['category'] = $categorys;
+		$this->load->view('MainWelcome',$output);
+		$this->load->view('CategoryMenu',$data);
+		$this->load->view('Content',$output);
+	}
 
 
 
