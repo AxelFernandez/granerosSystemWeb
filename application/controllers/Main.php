@@ -18,8 +18,8 @@ class Main extends CI_Controller {
 
 
 	public function index(){
-
-        $output = $this->registry->showForUsers();
+		$params = $this->uri->segment(3);
+        $output = $this->registry->showForUsers($params);
 	    $categorys = $this->category->getAllCategories();
 	    $data['category'] = $categorys;
         $this->load->view('MainWelcome',$output);
@@ -42,9 +42,6 @@ class Main extends CI_Controller {
             $this->load->view('Content',$output);
 		}else{redirect('login/index');} //if the user was an common user, the program redirect to login page.
 	}
-    public function show(){
-       $this->index($this->uri->segment(3));
-    }
 
 
 

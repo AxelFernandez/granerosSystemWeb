@@ -14,7 +14,7 @@ class Category_model extends CI_Model {
 	private function formatCategory($array){
         $result = null;
 		foreach ($array as $item){
-			$result= $result. '<a href="'.base_url().'index.php/main/show/'.$item['description'].'" type="button" class="list-group-item list-group-item-action">'.$item['description'].'</a>' ;
+			$result= $result. '<a href="'.base_url().'index.php/main/index/'.$item['description'].'" type="button" class="list-group-item list-group-item-action">'.$item['description'].'</a>' ;
 		}
 		return $result;
 	}
