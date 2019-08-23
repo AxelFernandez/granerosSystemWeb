@@ -11,7 +11,7 @@
         <div style="width: 20%" ">
             <div class="list-group">
                 <a href="#" class="list-group-item list-group-item-action active">
-                    Categorias
+                    Categorias en Telteka
                 </a>
                 <?php
 

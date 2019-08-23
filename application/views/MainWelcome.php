@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="utf-8">
-    <title>Test GroceryCrud</title>
+    <title>Telteka</title>
     <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/navbar-static/">
     <?php
     foreach($css_files as $file): ?>
