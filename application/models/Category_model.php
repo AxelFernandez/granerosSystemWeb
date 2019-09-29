@@ -33,4 +33,10 @@ class Category_model extends CI_Model {
         $output = $crud->render();
         return $output;
     }
+
+    public function getAllApi(){
+		$result = null;
+		$query = $this->db->query("Select * from category");
+		return json_encode($query->result_array());
+	}
 }
