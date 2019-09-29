@@ -35,8 +35,7 @@ class Category_model extends CI_Model {
     }
 
     public function getAllApi(){
-		$result = null;
 		$query = $this->db->query("Select * from category");
-		return json_encode($query->result_array());
+		return json_encode(array('categories' => $query->result_array()));
 	}
 }

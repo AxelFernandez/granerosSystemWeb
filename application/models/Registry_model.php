@@ -117,8 +117,7 @@ class Registry_model extends CI_Model
 	}
 
 	public function getAllApi($param){
-		$result = null;
 		$query = $this->db->query("Select * from registry where idCategory = ".$param );
-		return json_encode($query->result_array());
+		return json_encode(array('registry' => $query->result_array()));
 	}
 }
