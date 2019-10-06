@@ -9,6 +9,7 @@
 	<div class="navbar navbar-expand-md navbar-dark bg-dark mb-4 justify-content-between">
 
 		<ul class="navbar-nav mr-auto">
+			<img class="mb-4" src="<?php echo base_url() ?>/Img/telteka2.png" alt="" width="50" height="50">
 			<li class="nav-item active">
 				<a class="nav-link" href="<?php echo base_url();?>index.php/main/index">Inicio <span class="sr-only"></span></a>
 			</li>

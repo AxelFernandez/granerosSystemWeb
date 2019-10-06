@@ -53,12 +53,25 @@ class Category_model extends CI_Model {
         $crud->unset_export();
         $crud->unset_read();
         $crud->unset_print();
-        $output = $crud->render();
+		$crud->callback_before_insert(array($this,'category_callback'));
+		$output = $crud->render();
         return $output;
     }
 
-    public function getAllApi(){
-		$query = $this->db->query("Select * from category");
-		return json_encode(array('categories' => $query->result_array()));
+
+    public function category_callback($post_array){
+		if(is_null($post_array['idSuperCategory']) || empty($post_array['idSuperCategory'])){
+			$post_array['idSuperCategory'] = 0;
+		}
+		return $post_array;
+	}
+
+
+    public function getAllApi($idcategory){
+		$this->load->model('Validator_model','validator');
+		$query = $this->db->query("Select * from category where idSupercategory = ".$idcategory);
+		$hadChildren = $this->validator->hadChildren($idcategory);
+		return json_encode(array('categories' => $query->result_array(),
+								'hadChildren' => $hadChildren));
 	}
 }

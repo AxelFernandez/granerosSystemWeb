@@ -13,8 +13,8 @@ class Api extends CI_Controller {
 		$this->load->helper('url');
 	}
 
-	public function categories(){
-		echo $this->category->getAllApi();
+	public function categories($param){
+		echo $this->category->getAllApi($param);
 	}
 	public function registryFromCategory($param){
 		echo $this->registry->getAllApi($param);
