@@ -16,11 +16,11 @@ class Api extends CI_Controller {
 	public function categories(){
 		echo $this->category->getAllApi();
 	}
-	public function registry($param){
+	public function registryFromCategory($param){
 		echo $this->registry->getAllApi($param);
-
-
 	}
-
+	public function registryFromId($param){
+		echo $this->registry->getAllApiList($param);
+	}
 
 }

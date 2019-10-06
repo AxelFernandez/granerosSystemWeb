@@ -4,9 +4,29 @@
 class Category_model extends CI_Model {
 
 
-	public function getAllCategories(){
+	public function getSuperCategories(){
 		$result =null;
-	    $query = $this->db->query("Select description from category");
+		$query = $this->db->query("Select * from category where idSuperCategory = 0");
+		$result = $this->formatSuperCategory($query->result_array());
+		return $result;
+
+	}
+
+	private function formatSuperCategory($array){
+		$result = '<li class="nav-item"><a class="nav-link active" href="#">Categorias</a></li>';
+		foreach ($array as $item){
+			$result .=
+				'<li class="nav-item">
+					<a class="nav-link" href="'.base_url().'index.php/main/index/'.$item['idcategory'].'">'.$item['description'].'</a>
+				</li>';
+		}
+		return $result;
+	}
+
+	public function getAllCategories($param){
+		$result =null;
+		$param = is_null($param)? 0: $param;
+	    $query = $this->db->query("Select * from category where idSuperCategory = ".$param);
 		$result = $this->formatCategory($query->result_array());
 		return $result;
 	}
@@ -14,18 +34,21 @@ class Category_model extends CI_Model {
 	private function formatCategory($array){
         $result = null;
 		foreach ($array as $item){
-			$result= $result. '<a href="'.base_url().'index.php/main/index/'.$item['description'].'" type="button" class="list-group-item list-group-item-action">'.$item['description'].'</a>' ;
+			$result= $result. '<a href="'.base_url().'index.php/main/index/'.$item['idcategory'].'" type="button" class="list-group-item list-group-item-action">'.$item['description'].'</a>' ;
 		}
 		return $result;
 	}
+
 
     public function showCategory(){
         $this->load->library('grocery_CRUD');
         $crud = new grocery_CRUD();
         $crud->set_table('category');
-        $crud->columns('description');
         $crud->display_as('description','Descripcion');
-        $crud->set_language("spanish");
+        $crud->display_as('idSuperCategory','Categoria Padre');
+		$crud->set_relation('idSuperCategory','category','description');
+		$crud->columns('description','idSuperCategory');
+		$crud->set_language("spanish");
         $crud->unset_clone();
         $crud->unset_export();
         $crud->unset_read();
