@@ -92,4 +92,10 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 define('ADMIN', 1);
 define('USER', 2);
 
-
+/**
+ * Constants used from session
+ */
+define('ID','id');
+define('USERNAME','username');
+define('CATEGORY','category');
+define('LOGIN','login');

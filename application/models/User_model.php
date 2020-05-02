@@ -33,4 +33,19 @@ class User_model extends CI_Model
 		$output = $crud->render();
 		return $output;
 	}
+
+	public function changePassword($user, $pass, $newpass){
+		$this->db->select('*');
+		$this->db->from('user');
+		$this->db->where('user', $user);
+		$this->db->where('password', $pass);
+		$query = $this->db->get();
+		foreach ($query->result_array() as $datarow){
+			if ($datarow['password']==$pass){
+				$this->db->query("Update user set password='".$newpass."' where iduser='".$datarow['iduser']."';");
+				return true;
+			}
+			else{return false;}
+		}
+	}
 }
