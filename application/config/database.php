@@ -74,13 +74,12 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> '',
-	'hostname' => 'ec2-52-7-39-178.compute-1.amazonaws.com',
-	'username' => 'ztgtckfkbbssbt',
-	'password' => '32873a871b4f4fae7ff6e1a960795b8f0d33214f8d80f074162223bd9bc8cdf3',
-	'database' => 'd2difdir7f2psd',
+	'dsn'	=> getenv('DATABASE_URL'),
+	'hostname' => 'localhost',
+	'username' => '',
+	'password' => '',
+	'database' => '',
 	'dbdriver' => 'postgre',
-	'port'   => 5432,
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
